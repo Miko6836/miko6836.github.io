@@ -3,106 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <main class="container">
-        
-        <header class="hero">
-            <h1>Mikoyo</h1>
-            <p class="subtitle">Electrical Engineering Student</p>
-            <div class="header-links">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
-                <span class="dot">•</span>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
-                <span class="dot">•</span>
-                <a href="mailto:your.email@uwaterloo.ca">Email</a>
-            </div>
-        </header>
 
-        <hr class="divider">
-
+        <!-- PROJECTS SECTION  -->
         <section class="projects-section">
             <h2>Selected Projects</h2>
-            
             <div class="projects-grid">
                 
-                <article class="project-card">
+                <!-- PROJECT 1 -->
+                <article class="project-card" onclick="openModal('modal-p1')">
                     <div class="project-image-wrapper">
                         <img src="https://via.placeholder.com/600x350" alt="Project 1 Preview" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <h3>Project Title One</h3>
-                            <a href="https://github.com/yourusername/repo1" target="_blank" rel="noopener" class="github-link">
-                                View Source ↗
-                            </a>
+                            <span class="expand-hint">View Details ↗</span>
                         </div>
                         <p class="tech-stack">RP2040 / KiCad / C++</p>
-                        <p class="project-description">
-                            A brief, high-impact sentence explaining what the project is. Focus on your actions and the technical decisions you made during development.
-                        </p>
-                        <ul class="project-bullets">
-                            <li>Designed a custom 4-layer PCB routing high-speed differential pairs.</li>
-                            <li>Optimized firmware power consumption by implementing deep sleep states.</li>
-                        </ul>
+                        <p class="project-description">A short, scannable preview sentence for recruiters checking your profile quickly.</p>
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- PROJECT 2 -->
+                <article class="project-card" onclick="openModal('modal-p2')">
                     <div class="project-image-wrapper">
                         <img src="https://via.placeholder.com/600x350" alt="Project 2 Preview" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <h3>Project Title Two</h3>
-                            <a href="https://github.com/yourusername/repo2" target="_blank" rel="noopener" class="github-link">
-                                View Source ↗
-                            </a>
+                            <span class="expand-hint">View Details ↗</span>
                         </div>
-                        <p class="tech-stack">Python / OpenCV / Git</p>
-                        <p class="project-description">
-                            A brief description highlighting your problem-solving process. Keep it concise so a technical recruiter can scan it in under five seconds.
-                        </p>
-                        <ul class="project-bullets">
-                            <li>Implemented real-time computer vision algorithms processing at 60 FPS.</li>
-                            <li>Automated regression testing pipelines, reducing deployment errors by 15%.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image-wrapper">
-                        <img src="https://via.placeholder.com/600x350" alt="Project 3 Preview" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Project Title Three</h3>
-                            <a href="https://github.com/yourusername/repo3" target="_blank" rel="noopener" class="github-link">
-                                View Source ↗
-                            </a>
-                        </div>
-                        <p class="tech-stack">HTML / CSS / JavaScript</p>
-                        <p class="project-description">
-                            Describe the architecture or foundational concepts of this project. Keep the focus entirely on execution, performance, and hardware/software integration.
-                        </p>
-                        <ul class="project-bullets">
-                            <li>Built a responsive UI utilizing semantic HTML and modern CSS layouts.</li>
-                            <li>Deployed and maintained an optimized static build asset pipeline.</li>
-                        </ul>
+                        <p class="tech-stack">Python / OpenCV</p>
+                        <p class="project-description">A clean summary sentence introducing the core challenge or framework used.</p>
                     </div>
                 </article>
 
             </div>
         </section>
 
+        <hr class="divider">
+
+        <!-- EXPERIENCE SECTION -->
+        <section class="info-section">
+            <h2>Experience</h2>
+            <div class="info-item">
+                <div class="info-header">
+                    <div>
+                        <h3>Electrical Engineering Intern</h3>
+                        <p class="company">Company Name or Substation Name</p>
+                    </div>
+                    <span class="date">Jan 2026 – Apr 2026</span>
+                </div>
+                <ul class="info-bullets">
+                    <li>Conducted high-voltage equipment field testing and data validation under strict safety compliance.</li>
+                    <li>Collaborated on troubleshooting power distribution systems, delivering technical risk assessment reports.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- EDUCATION SECTION -->
+        <section class="info-section">
+            <h2>Education</h2>
+            <div class="info-item">
+                <div class="info-header">
+                    <div>
+                        <h3>Candidate for Bachelor of Applied Science in Electrical Engineering</h3>
+                        <p class="company">University of Waterloo</p>
+                    </div>
+                    <span class="date">Sept 2025 – Present</span>
+                </div>
+                <p class="education-details">Relevant Coursework: Circuits and Systems, Microprocessors, Embedded Code Design.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
         <footer class="site-footer">
-            <p>© 2026 Miko6836</p>
+            <p>© 2026. Built cleanly from scratch.</p>
         </footer>
 
     </main>
+
+    <!-- ========================================== -->
+    <!-- DETAILED MODALS (Hidden by default)       -->
+    <!-- ========================================== -->
+
+    <!-- MODAL FOR PROJECT 1 -->
+    <div id="modal-p1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-p1')">&times;</span>
+            <h2>Project Title One (Detailed View)</h2>
+            <p class="modal-tech">RP2040 / KiCad / C++</p>
+            <a href="https://github.com/yourusername/repo1" target="_blank" rel="noopener" class="modal-github">View GitHub Repository ↗</a>
+            
+            <div class="modal-gallery">
+                <img src="https://via.placeholder.com/800x450" alt="Detailed Screenshot 1">
+                <img src="https://via.placeholder.com/800x450" alt="Detailed Schematic 2">
+            </div>
+
+            <div class="modal-body-text">
+                <h3>Technical Breakdown</h3>
+                <p>This is where you dive deep into your design decisions. For example, mention why you selected the RP2040 chip, how you routed the signal paths in KiCad to maintain integrity, and your software strategy to minimize latency.</p>
+                
+                <h3>Key Deliverables</h3>
+                <ul>
+                    <li>Designed and assembled a fully custom 4x4 matrix layout with hardware-level debouncing.</li>
+                    <li>Wrote embedded firmware handling dynamic layers and native USB HID configuration.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR PROJECT 2 -->
+    <div id="modal-p2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-p2')">&times;</span>
+            <h2>Project Title Two (Detailed View)</h2>
+            <p class="modal-tech">Python / OpenCV</p>
+            <a href="https://github.com/yourusername/repo2" target="_blank" rel="noopener" class="modal-github">View GitHub Repository ↗</a>
+            
+            <div class="modal-gallery">
+                <img src="https://via.placeholder.com/800x450" alt="Detailed Screenshot 1">
+            </div>
+
+            <div class="modal-body-text">
+                <h3>Technical Breakdown</h3>
+                <p>Explain the backend mechanics, your frame processing algorithms, how you handled asynchronous streams, or any optimization math used to squeeze out higher framework execution speeds.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR MODAL INTERACTION -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevents background scrolling
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto"; // Restores background scrolling
+        }
+        // Close modal if user clicks anywhere outside of the modal box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
 
 </body>
 </html>
