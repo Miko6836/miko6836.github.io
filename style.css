@@ -1,4 +1,4 @@
-/* --- RESET & GLOBAL VARIABLES --- */
+/* --- RESET & VARIABLES --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,15 +12,15 @@
     --accent: #58a6ff;
     --card-bg: #161b22;
     --border-color: #30363d;
-    --max-width: 720px;
+    --max-width: 1024px; /* Widened layout for 2-column configuration */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     line-height: 1.6;
-    padding: 40px 20px;
+    padding: 60px 20px;
 }
 
 .container {
@@ -28,63 +28,26 @@ body {
     margin: 0 auto;
 }
 
-/* --- HERO HEADER --- */
-.hero {
-    padding: 40px 0 24px 0;
-}
-
-.hero h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #fff;
-    margin-bottom: 4px;
-}
-
-.subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-}
-
-.header-links {
-    font-size: 0.95rem;
-}
-
-.header-links a {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.header-links a:hover {
-    color: var(--accent);
-}
-
-.dot {
-    margin: 0 8px;
-    color: var(--border-color);
-}
-
 .divider {
     border: 0;
     height: 1px;
     background-color: var(--border-color);
-    margin: 32px 0 48px 0;
+    margin: 50px 0;
 }
 
-/* --- PROJECTS --- */
-.projects-section h2 {
-    font-size: 1.4rem;
+h2 {
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    color: #fff;
     letter-spacing: -0.01em;
 }
 
+/* --- TWO-COLUMN PROJECTS GRID --- */
 .projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 11fr); /* Generates 2 identical columns */
+    gap: 24px;
 }
 
 .project-card {
@@ -94,22 +57,27 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    cursor: pointer; /* Indicates card is clickable */
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    border-color: #444c56;
 }
 
 .project-image-wrapper {
     width: 100%;
     background-color: #000;
     border-bottom: 1px solid var(--border-color);
-    display: flex;
 }
 
 .project-img {
     width: 100%;
-    height: auto;
+    height: 200px;
     object-fit: cover;
     display: block;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
+    opacity: 0.85;
 }
 
 .project-card:hover .project-img {
@@ -117,7 +85,10 @@ body {
 }
 
 .project-content {
-    padding: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .project-header {
@@ -128,66 +99,196 @@ body {
 }
 
 .project-header h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.15rem;
     color: #fff;
 }
 
-.github-link {
-    font-size: 0.9rem;
+.expand-hint {
+    font-size: 0.8rem;
     color: var(--accent);
-    text-decoration: none;
     font-weight: 500;
 }
 
-.github-link:hover {
-    text-decoration: underline;
-}
-
 .tech-stack {
-    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-    font-size: 0.8rem;
+    font-family: monospace;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .project-description {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* --- EDUCATION & EXPERIENCE SECTIONS --- */
+.info-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item {
+    margin-bottom: 24px;
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.info-header h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.company {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.info-bullets {
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.info-bullets li {
+    margin-bottom: 6px;
+}
+
+.education-details {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* --- MODAL POPUP SYSTEM --- */
+.modal {
+    display: none; /* Invisible by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 14, 17, 0.85); /* Smooth overlay backdrop */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 800px;
+    max-height: 85vh;
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    overflow-y: auto; /* Scrollable internal view if contents run long */
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+.modal-content h2 {
+    margin-bottom: 4px;
+}
+
+.modal-tech {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.modal-github {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.modal-github:hover {
+    text-decoration: underline;
+}
+
+.modal-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.modal-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.modal-body-text h3 {
+    font-size: 1.1rem;
+    margin: 20px 0 8px 0;
+    color: #fff;
+}
+
+.modal-body-text p {
     font-size: 0.95rem;
     color: var(--text-primary);
     margin-bottom: 12px;
 }
 
-.project-bullets {
+.modal-body-text ul {
     padding-left: 20px;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-size: 0.95rem;
+    color: var(--text-primary);
 }
 
-.project-bullets li {
+.modal-body-text li {
     margin-bottom: 6px;
 }
 
 /* --- FOOTER --- */
 .site-footer {
-    margin-top: 80px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border-color);
+    margin-top: 60px;
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 600px) {
-    body {
-        padding: 20px 16px;
+/* --- RESPONSIVE FALLBACKS --- */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Switch to single column on mobile displays */
     }
-    .hero h1 {
-        font-size: 1.8rem;
+    .info-header {
+        flex-direction: column;
+        gap: 4px;
     }
-    .project-content {
-        padding: 16px;
+    .modal-content {
+        padding: 20px;
     }
 }
